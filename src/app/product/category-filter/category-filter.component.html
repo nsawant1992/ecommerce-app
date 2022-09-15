@@ -1,0 +1,9 @@
+<p class="header">Category</p>
+<ng-container *ngFor="let category of categories">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="{{category}}" name="{{category}}" (change) ="updateSelectedCategories($event)">
+        <label class="form-check-label" for="flexCheckDefault">
+            {{category}}
+        </label>
+    </div>
+</ng-container>

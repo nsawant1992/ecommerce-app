@@ -1,0 +1,33 @@
+<div class="form-group">
+    <div class="d-sm-flex mt-1 justify-content-between">
+        <app-search></app-search>
+        <div class="d-sm-flex">
+            SORT BY
+            <div class="dropdown" style="top: -21%;">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">{{sortOrder}}<span
+                        class="caret"></span></button>
+                <ul class="dropdown-menu pe-auto">
+                    <li value="'asc'" (click)="sortProducts('Asc')">Asc</li>
+                    <li value="'desc'" (click)="sortProducts('Desc')">Desc</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 product-card my-2 mx-2" *ngFor="let item of products; let index = index">
+            <img class="image-container mb-2" [src]="item.image">
+            <div class="product-name text-truncate">{{item.title}}</div>
+            <div class="">Cat: {{item?.category}}</div>
+            <div class="d-inline-flex">Rating: <app-rating-star [rate]="item?.rating?.rate || 0"></app-rating-star>
+                {{item?.price|currency}}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 ml-auto mr-auto">
+            <div class="float-end">
+                <app-pagination [totalRecords]="totalRecords" [recordsPerPage]="5" (onPageChange)="displayActivePage($event)">
+                </app-pagination>
+            </div>
+        </div>
+    </div>
+</div>

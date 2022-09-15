@@ -1,0 +1,113 @@
+// body {
+//     background-color: #f3f5f9;
+// }
+
+// .wrapper {
+//     display: flex;
+//     position: relative;
+// }
+
+// .wrapper .sidebar {
+//     width: 200px;
+//     height: 100%;
+//     padding: 10px 7px;
+//     position: absolute;
+//     border-right: 1px solid #C2C3C6;
+//     background-color: white;
+// }
+
+// .wrapper .sidebar h2 {
+//     color: #fff;
+//     text-transform: uppercase;
+//     text-align: center;
+//     margin-bottom: 30px;
+// }
+
+// .wrapper .sidebar ul li {
+//     padding: 15px;
+//     border-bottom: 1px solid #bdb8d7;
+//     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+//     border-top: 1px solid rgba(255, 255, 255, 0.05);
+// }
+
+// .wrapper .sidebar ul li a {
+//     color: #bdb8d7;
+//     display: block;
+// }
+
+
+
+// .wrapper .sidebar .social_media {
+//     position: absolute;
+//     bottom: 0;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     display: flex;
+// }
+
+// .wrapper .sidebar .social_media a {
+//     display: block;
+//     width: 40px;
+//     height: 40px;
+//     line-height: 45px;
+//     text-align: center;
+//     margin: 0 5px;
+//     color: #bdb8d7;
+//     border-top-left-radius: 5px;
+//     border-top-right-radius: 5px;
+// }
+
+// .wrapper .main_content {
+//     width: 100%;
+//     margin-left: 200px;
+//     overflow-y: auto;
+//     padding: 1px;
+// }
+
+// .wrapper .main_content .header {
+//     padding: 20px;
+//     background: #fff;
+//     color: #717171;
+//     border-bottom: 1px solid #e0e4e8;
+//     background-color: white;
+// }
+
+// .wrapper .main_content .info {
+//     color: #717171;
+//     padding: 1px;
+//     line-height: 25px;
+//     background-color: white;
+// }
+
+// .wrapper .main_content .info div {
+//     margin-bottom: 20px;
+// }
+
+// @media (max-height: 500px) {
+//     .social_media {
+//         display: none !important;
+//     }
+// }
+
+.main {
+    display: flex;
+    flex-grow: 1;
+ 
+}
+
+.content {
+    flex-grow: 1;
+}
+
+/* --------- Non-flexbox related styles --------- */
+.child {
+  //  display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1%;
+    padding: 20px;
+    font-size: 20px;
+    line-height: 20px;
+    //color: #ffe8c3;
+    background-color: white;
+}

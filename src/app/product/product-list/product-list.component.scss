@@ -1,0 +1,39 @@
+.product-card {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #AFB5CC;
+    border-radius: 5px;
+    padding: 10px 11px;
+    height: 250px;
+    width: 300px;
+}
+
+.image-container {
+    width: 150px;
+    ;
+    height: 150px;
+}
+
+.product-name {
+    font-family: 'InterNormal';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+
+    color: #6776AC;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
