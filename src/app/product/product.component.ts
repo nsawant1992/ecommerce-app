@@ -14,7 +14,9 @@ export class ProductComponent implements OnInit {
   paginatedRecords: Product[] = [];
   pageSize: number = 5;
   value: number = 123;
-  _currentValues:number[] = [];
+  _currentValues: number[] = [];
+  selectedCategories: string[] = [];
+  searchText: string = "";
 
   constructor(private productService: ProductService) {
 
@@ -32,6 +34,7 @@ export class ProductComponent implements OnInit {
   getAllCategories() {
     this.productService.getAllCategories().subscribe(resp => {
       this.categories = resp;
+      this.selectedCategories = this.categories;
     })
   }
 
@@ -44,37 +47,49 @@ export class ProductComponent implements OnInit {
   }
 
   filterProducts(searchValue: string) {
-    this.filteredProducts = this.filteredProducts.filter((product: Product) => {
-      return product.title.toLowerCase().includes(searchValue?.toLowerCase());
-    });
-    this.showPaginatedRecords();
+    this.searchText = searchValue;
+    this.filterRecords();
   }
 
   filterByCategory(categories: string[]) {
+
     if (categories?.length > 0) {
-      this.filteredProducts = this.products.filter((product: Product) => {
-        return categories.includes(product.category);
-      });
+      this.selectedCategories = categories;
     } else {
-      this.filteredProducts = [...this.products];
+      this.selectedCategories = this.categories;
     }
-    this.showPaginatedRecords();
+    this.filterRecords();
   }
 
   showPaginatedRecords(activePage: number = 1) {
     this.paginatedRecords = this.filteredProducts.slice((activePage - 1) * this.pageSize, activePage * this.pageSize);
   }
 
-  paginateSOrtedProducts(products: Product[]) {
+  paginateSortedProducts(products: Product[]) {
     this.filteredProducts = [...products];
     this.showPaginatedRecords();
   }
 
   onSliderChange(selectedValues: number[]) {
     this._currentValues = selectedValues;
-    this.paginatedRecords = this.filteredProducts.filter((product: Product) => {
-      return product?.price >= selectedValues[0] && product?.price <= selectedValues[1];
+    this.filterRecords();
+  }
+
+  filterRecords() {
+    //Apply all the filters
+    this.filteredProducts = this.products.filter((product: Product) => {
+      return this.selectedCategories.includes(product.category) && product?.price >= this._currentValues[0] && product?.price <= this._currentValues[1];
     });
-    console.log(selectedValues)
+
+    if (this.searchText) {
+      this.filteredProducts = this.filteredProducts.filter((product: Product) => {
+        return product.title.toLowerCase().includes(this.searchText?.toLowerCase());
+      });
+    } else {
+      this.filteredProducts = this.products.filter((product: Product) => {
+        return this.selectedCategories.includes(product.category) && product?.price >= this._currentValues[0] && product?.price <= this._currentValues[1];
+      });
+    }
+    this.showPaginatedRecords();
   }
 }
